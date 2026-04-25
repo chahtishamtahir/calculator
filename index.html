@@ -1,144 +1,151 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dynamic JavaScript Calculator</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(to right, #4facfe, #00f2fe);
-    }
-
-    .calculator {
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      width: 300px;
-    }
-
-    .display {
-      background-color: #f1f3f6;
-      height: 60px;
-      border-radius: 10px;
-      padding: 10px;
-      text-align: right;
-      font-size: 24px;
-      margin-bottom: 20px;
-      overflow-x: auto;
-    }
-
-    .buttons {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-    }
-
-    .btn {
-      padding: 20px;
-      background-color: #e0e0e0;
-      border: none;
-      border-radius: 10px;
-      font-size: 18px;
-      transition: background 0.3s;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background-color: #d0d0d0;
-    }
-
-    .btn.operator {
-      background-color: #ffd54f;
-    }
-
-    .btn.operator:hover {
-      background-color: #ffca28;
-    }
-
-    .btn.equal {
-      background-color: #4caf50;
-      color: white;
-    }
-
-    .btn.equal:hover {
-      background-color: #43a047;
-    }
-
-    .btn.clear {
-      background-color: #f44336;
-      color: white;
-    }
-
-    .btn.clear:hover {
-      background-color: #e53935;
-    }
-  </style>
-</head>
-<body>
-  <div class="calculator">
-    <div class="display" id="display"></div>
-    <div class="buttons">
-      <button class="btn clear" onclick="clearDisplay()">C</button>
-      <button class="btn" onclick="appendToDisplay('(')">(</button>
-      <button class="btn" onclick="appendToDisplay(')')">)</button>
-      <button class="btn operator" onclick="appendToDisplay('/')">&#247;</button>
-
-      <button class="btn" onclick="appendToDisplay('7')">7</button>
-      <button class="btn" onclick="appendToDisplay('8')">8</button>
-      <button class="btn" onclick="appendToDisplay('9')">9</button>
-      <button class="btn operator" onclick="appendToDisplay('*')">&times;</button>
-
-      <button class="btn" onclick="appendToDisplay('4')">4</button>
-      <button class="btn" onclick="appendToDisplay('5')">5</button>
-      <button class="btn" onclick="appendToDisplay('6')">6</button>
-      <button class="btn operator" onclick="appendToDisplay('-')">&minus;</button>
-
-      <button class="btn" onclick="appendToDisplay('1')">1</button>
-      <button class="btn" onclick="appendToDisplay('2')">2</button>
-      <button class="btn" onclick="appendToDisplay('3')">3</button>
-      <button class="btn operator" onclick="appendToDisplay('+')">+</button>
-
-      <button class="btn" onclick="appendToDisplay('0')">0</button>
-      <button class="btn" onclick="appendToDisplay('.')">.</button>
-      <button class="btn equal" onclick="calculate()">=</button>
-      <button class="btn" onclick="backspace()">&#9003;</button>
-    </div>
-  </div>
-
-  <script>
-    const display = document.getElementById('display');
-
-    function appendToDisplay(value) {
-      display.innerText += value;
-    }
-
-    function clearDisplay() {
-      display.innerText = '';
-    }
-
-    function calculate() {
-      try {
-        display.innerText = eval(display.innerText);
-      } catch (error) {
-        display.innerText = 'Error';
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic JavaScript Calculator</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
-    }
 
-    function backspace() {
-      display.innerText = display.innerText.slice(0, -1);
-    }
-  </script>
-</body>
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+      }
+
+      .calculator {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        width: 300px;
+      }
+
+      .display {
+        background-color: #f1f3f6;
+        height: 60px;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: right;
+        font-size: 24px;
+        margin-bottom: 20px;
+        overflow-x: auto;
+      }
+
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+      }
+
+      .btn {
+        padding: 20px;
+        background-color: #e0e0e0;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        transition: background 0.3s;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: #d0d0d0;
+      }
+
+      .btn.operator {
+        background-color: #ffd54f;
+      }
+
+      .btn.operator:hover {
+        background-color: #ffca28;
+      }
+
+      .btn.equal {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      .btn.equal:hover {
+        background-color: #43a047;
+      }
+
+      .btn.clear {
+        background-color: #f44336;
+        color: white;
+      }
+
+      .btn.clear:hover {
+        background-color: #e53935;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="display" id="display"></div>
+      <div class="buttons">
+        <button class="btn clear" onclick="clearDisplay()">C</button>
+        <button class="btn" onclick="appendToDisplay('(')">(</button>
+        <button class="btn" onclick="appendToDisplay(')')">)</button>
+        <button class="btn operator" onclick="appendToDisplay('/')">
+          &#247;
+        </button>
+
+        <button class="btn" onclick="appendToDisplay('7')">7</button>
+        <button class="btn" onclick="appendToDisplay('8')">8</button>
+        <button class="btn" onclick="appendToDisplay('9')">9</button>
+        <button class="btn operator" onclick="appendToDisplay('*')">
+          &times;
+        </button>
+
+        <button class="btn" onclick="appendToDisplay('4')">4</button>
+        <button class="btn" onclick="appendToDisplay('5')">5</button>
+        <button class="btn" onclick="appendToDisplay('6')">6</button>
+        <button class="btn operator" onclick="appendToDisplay('-')">
+          &minus;
+        </button>
+
+        <button class="btn" onclick="appendToDisplay('1')">1</button>
+        <button class="btn" onclick="appendToDisplay('2')">2</button>
+        <button class="btn" onclick="appendToDisplay('3')">3</button>
+        <button class="btn operator" onclick="appendToDisplay('+')">+</button>
+
+        <button class="btn" onclick="appendToDisplay('0')">0</button>
+        <button class="btn" onclick="appendToDisplay('.')">.</button>
+        <button class="btn equal" onclick="calculate()">=</button>
+        <button class="btn" onclick="backspace()">&#9003;</button>
+      </div>
+    </div>
+
+    <script>
+      const display = document.getElementById("display");
+
+      function appendToDisplay(value) {
+        display.innerText += value;
+      }
+
+      function clearDisplay() {
+        display.innerText = "";
+      }
+
+      function calculate() {
+        try {
+          display.innerText = eval(display.innerText);
+        } catch (error) {
+          display.innerText = "Error";
+        }
+      }
+
+      function backspace() {
+        display.innerText = display.innerText.slice(0, -1);
+      }
+    </script>
+    <h3>Made with love</h3>
+  </body>
 </html>
